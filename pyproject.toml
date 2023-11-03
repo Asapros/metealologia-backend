@@ -10,6 +10,10 @@ license = "GPL-3.0-or-later"
 [tool.poetry.dependencies]
 python = "^3.10"
 fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
+
+[tool.poetry.scripts]
+start = "metealologia_api.main:start"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
