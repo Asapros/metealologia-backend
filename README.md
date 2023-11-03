@@ -1,8 +1,11 @@
 # MeteALOlogia-API
 API service of the "MeteALOlogia" project. The project's goal is to create a weather station along with a website to view live measurements. This repository aims at creating an HTTP REST API server managing the collected data.
 
+## Installation
+Use `poetry install` and `poetry run start` in order to run the project on `localhost:8080`. Endpoint docs are available on `/docs`
+
 ## Configuration file
-The config file will contain all of the static data of the weather stations:
+The config file will contain all the static data of the weather stations:
 - types of sensors
 - station instances
 - public keys

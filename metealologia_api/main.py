@@ -1,22 +1,19 @@
 import importlib.metadata
 
 import uvicorn
-from fastapi import FastAPI
 
+from . import app
 from .config import settings
-
-app = FastAPI()
 
 
 @app.get("/")
 async def main_route():
-    return "MeteALOlogia API v{}".format(importlib.metadata.version("metealologia_api"))
-
-
-@app.get("/env")
-async def env_route():
-    return "env: {}".format(settings.environment)
+    return {
+        "title": "MeteALOlogia",
+        "version": importlib.metadata.version("metealologia_api"),
+        "environment": settings.environment
+    }
 
 
 def start():
-    uvicorn.run("metealologia_api.main:app", host="localhost", port=8000, reload=settings.environment == "development")
+    uvicorn.run("metealologia_api.main:app", host="localhost", port=8080, reload=settings.environment == "development")
