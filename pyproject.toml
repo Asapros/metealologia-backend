@@ -12,6 +12,7 @@ python = "^3.10"
 fastapi = "^0.104.1"
 uvicorn = {extras = ["standard"], version = "^0.23.2"}
 pydantic-settings = "^2.0.3"
+sqlalchemy = "^2.0.23"
 
 [tool.poetry.scripts]
 start = "metealologia_api.main:start"

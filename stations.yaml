@@ -1,5 +1,0 @@
-- id: alpha
-  name: station-alpha
-  sensors:
-    - id: omega
-      name: sensor-omega

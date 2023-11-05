@@ -5,6 +5,8 @@ import yaml
 
 class Settings(BaseSettings):
     environment: str
+    database_url: str
+    database_flavour: str
 
     model_config = SettingsConfigDict(env_file=".env")
 
