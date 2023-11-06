@@ -7,6 +7,9 @@ class Settings(BaseSettings):
     environment: str
     database_url: str
     database_flavour: str
+    stations_schema: str
+    host: str
+    port: int
 
     model_config = SettingsConfigDict(env_file=".env")
 
@@ -27,5 +30,5 @@ class Station(BaseModel):
 
 _StationsType = TypeAdapter(list[Station])
 
-with open("stations.yaml") as file:
+with open(settings.stations_schema) as file:
     stations_schema = _StationsType.validate_python(yaml.safe_load(file))

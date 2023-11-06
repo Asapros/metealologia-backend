@@ -16,4 +16,4 @@ async def main_route():
 
 
 def start():
-    uvicorn.run("metealologia_api.main:app", host="localhost", port=8080, reload=settings.environment == "development")
+    uvicorn.run("metealologia_api.main:app", host=settings.host, port=settings.port, reload=settings.environment == "development")

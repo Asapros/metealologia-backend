@@ -4,8 +4,8 @@ API service of the "MeteALOlogia" project. The project's goal is to create a wea
 ## Installation
 Use `poetry install` and `poetry run start` in order to run the project on `localhost:8080`. Endpoint docs are available on `/docs`
 
-## Configuration file
-The config file will contain all the static data of the weather stations:
+## Configuration files
+The config files will contain all the static data of the weather stations:
 - types of sensors
 - station instances
 - public keys
@@ -18,7 +18,7 @@ To minimise costs, we decided not to use an HTTPS certificate. Instead the `Auth
 
 ## Planned endpoints:
 
-### GET /stations/
+### GET /stations
 Success: *200 OK*
 ```json
 [
@@ -30,73 +30,42 @@ Success: *200 OK*
       {
         "id": sensor id,
         "type": sensor type,
-        "name": sensor display name,
-        "lastReport": timestamp
+        "name": sensor display name
       }
     ]
   }
 ]
 ```
 
-### GET /stations/\<station id>
-Invalid ID: *404 Not Found*
-
-A corresponding station element from `GET /stations/`
-
-### GET /stations/\<station id>/sensors/\<sensor id>
-Invalid ID: *404 Not Found*
-
-A corresponding sensor element from `GET /stations/`
-
-### POST /stations/\<station id>/reports
+### POST /stations/\<station id>/sensor/\<sensor_id>/reports
 
 #### Request structure
 ```json
-[
-  {
-    "id": sensor id,
-    "at": measurement timestamp,
-    "data": { ... }
-  }
-]
+{
+  "timestamp": measurement timestamp,
+  "data": { ... }
+}
 ```
 
 #### Response
 Success: *201 Created*
 
-### GET /stations/\<station id>/reports
+### GET /stations/\<station id>/sensor/\<sensor_id>/reports
 Doesn't require authorization.
 
 #### Request parameters
 - before=timestamp
 - after=timestamp
 
-These will provide the requested range of reports
+These will provide the requested range of reports.
 
 #### Response
 Success: *200 OK*
 ```json
 [
-  { ... as in POST /stations/<station id>/reports request}
+  { ... as in POST reports}
 ]
 ```
-
-### GET /stations/\<station id>/sensors/\<sensor id>/reports
-Doesn't require authorization.
-
-#### Request parameters
-Same as in `GET /stations/<station id>/reports`
-
-#### Response
-```json
-[
-  {
-    "at": measurement timestamp,
-    "data": { ... }
-  }
-]
-```
-
 
 ### GET /stations/\<station id>/listen
 ### GET /stations/\<station id>/sensors/\<sensor id>/listen
