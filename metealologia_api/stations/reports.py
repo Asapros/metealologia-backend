@@ -1,12 +1,21 @@
 from datetime import datetime
 
-from fastapi import APIRouter, HTTPException, Response
+from fastapi import APIRouter, Depends, HTTPException, Response
 from pydantic import BaseModel
 
+from ..config import stations_schema
 from ..database.models import ReportUpload
 from ..database.session import database
 
-report_router = APIRouter(prefix="/{station_id}/sensor/{sensor_id}")
+
+def station_id_validator(station_id: str):
+    for station in stations_schema:
+        if station.id == station_id:
+            return
+    raise HTTPException(404, detail="station with id={} doesn't exist".format(station_id))
+
+
+report_router = APIRouter(prefix="/{station_id}/sensor/{sensor_id}", dependencies=[Depends(station_id_validator)])
 
 
 class ReportBody(BaseModel):
@@ -31,6 +40,6 @@ async def get_reports(station_id: str, sensor_id: str, after: datetime, before: 
 
 
 @report_router.get("/listen")
-async def listen_for_reports(stations_id: str):
+async def listen_for_reports(station_id: str):
     """Streams newly created reports"""
     raise HTTPException(status_code=501)
