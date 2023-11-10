@@ -26,6 +26,7 @@ class Sensor(BaseModel):
 class Station(BaseModel):
     id: str
     name: str
+    key: str
     sensors: list[Sensor]
 
 

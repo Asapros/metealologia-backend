@@ -6,12 +6,12 @@ Use `poetry install` and `poetry run start` in order to run the project on `loca
 
 ## Configuration files
 The config files will contain all the static data of the weather stations:
-- types of sensors
-- station instances
-- public keys
+- station metadata
+- sensor metadata
+- api keys
 
 ## Authorization
-Each client will use an API key in order to perform permitted actions in a permitted frequency. The default 
+There are sha256 hash digests of api keys inside the configuration file. `POST` request for a report will get accepted only when provided a valid, corresponding key in the `Authorization` header.
 
 ## Planned endpoints:
 
@@ -22,6 +22,7 @@ Success: *200 OK*
   {
     "id": station id,
     "name": station display name,
+    "key": api key hash,
     "sensors":
     [
       {
@@ -35,6 +36,8 @@ Success: *200 OK*
 ```
 
 ### POST /stations/\<station id>/sensors/\<sensor_id>/reports
+
+Requires API key authorization.
 
 #### Request structure
 ```json
