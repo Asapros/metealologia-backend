@@ -15,7 +15,7 @@ def station_id_validator(station_id: str):
     raise HTTPException(404, detail="station with id={} doesn't exist".format(station_id))
 
 
-report_router = APIRouter(prefix="/{station_id}/sensor/{sensor_id}", dependencies=[Depends(station_id_validator)])
+report_router = APIRouter(prefix="/{station_id}/sensors/{sensor_id}", dependencies=[Depends(station_id_validator)])
 
 
 class ReportBody(BaseModel):

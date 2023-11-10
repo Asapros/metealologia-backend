@@ -10,11 +10,8 @@ The config files will contain all the static data of the weather stations:
 - station instances
 - public keys
 
-## Signatures
-To minimise costs, we decided not to use an HTTPS certificate. Instead the `Authorization` header will contain:
- - station ID
- - a nonce to prevent resending the same payload
- - an encrypted signature of request's body and the two above, possible to be verified using a public key.
+## Authorization
+Each client will use an API key in order to perform permitted actions in a permitted frequency. The default 
 
 ## Planned endpoints:
 
@@ -37,7 +34,7 @@ Success: *200 OK*
 ]
 ```
 
-### POST /stations/\<station id>/sensor/\<sensor_id>/reports
+### POST /stations/\<station id>/sensors/\<sensor_id>/reports
 
 #### Request structure
 ```json
@@ -50,7 +47,7 @@ Success: *200 OK*
 #### Response
 Success: *201 Created*
 
-### GET /stations/\<station id>/sensor/\<sensor_id>/reports
+### GET /stations/\<station id>/sensors/\<sensor_id>/reports
 Doesn't require authorization.
 
 #### Request parameters
