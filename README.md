@@ -11,8 +11,7 @@ The config files will contain all the static data of the weather stations:
 - api keys
 
 ## Authorization
-There are sha256 hash digests of api keys inside the configuration file. `POST` request for a report will get accepted only when provided a valid, corresponding key in the `Authorization` header.
-
+There are sha256 hash digests of api keys inside the configuration file. `POST` request for a report will get accepted only when provided a valid, corresponding key in the `Authorization` header. In the dummy config, key for the station is **sample**
 ## Planned endpoints:
 
 ### GET /stations
