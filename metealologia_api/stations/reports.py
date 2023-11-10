@@ -7,7 +7,7 @@ from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
 from ..config import Station, stations_schema
-from ..database.models import ReportUpload
+from ..database.models import ReportData, ReportUpload
 from ..database.session import database
 
 station_key_header = APIKeyHeader(name="Authorization")
@@ -46,7 +46,7 @@ async def upload_report(station_id: str, sensor_id: str, body: ReportBody):
     )
 
 
-@report_router.get("/reports")
+@report_router.get("/reports", response_model=list[ReportData])
 async def get_reports(station_id: str, sensor_id: str, after: datetime, before: datetime | None = None):
     """Fetches reports created after 'after' timestamp"""
     if before is None:

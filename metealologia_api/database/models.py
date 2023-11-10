@@ -3,16 +3,15 @@ from datetime import datetime
 from pydantic import BaseModel
 
 
-class ReportBase(BaseModel):
-    station_id: str
-    sensor_id: str
+class ReportData(BaseModel):
     timestamp: datetime
     data: dict
 
 
-class Report(ReportBase):
-    pass
+class Report(ReportData):
+    station_id: str
+    sensor_id: str
 
 
-class ReportUpload(ReportBase):
+class ReportUpload(Report):
     pass

@@ -1,10 +1,11 @@
 from datetime import datetime
 
-from sqlalchemy import asc, desc
+from sqlalchemy import asc, desc, select
 from sqlalchemy.ext.asyncio import AsyncConnection, create_async_engine
 
 from .schema import metadata, reports
 from .. import Database, Report, ReportUpload
+from ..models import ReportData
 
 
 class SQLDatabase(Database):
@@ -23,8 +24,8 @@ class SQLDatabase(Database):
         await self.connection.execute(reports.insert(), report.model_dump())
         await self.connection.commit()
 
-    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime) -> list[Report]:
-        result = await self.connection.execute(reports.select()
+    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime) -> list[ReportData]:
+        result = await self.connection.execute(select(reports.columns.timestamp, reports.columns.data)
                                                .where(reports.columns.station_id == station_id)
                                                .where(reports.columns.sensor_id == sensor_id)
                                                .where(reports.columns.timestamp > after)
@@ -32,7 +33,7 @@ class SQLDatabase(Database):
                                                .order_by(desc(reports.columns.timestamp))
                                                )
         return [
-            Report(station_id=row.station_id, sensor_id=row.sensor_id, timestamp=row.timestamp, data=row.data)
+            ReportData(timestamp=row.timestamp, data=row.data)
             for row in result.fetchall()
         ]
 
