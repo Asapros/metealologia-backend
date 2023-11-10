@@ -3,3 +3,4 @@
   sensors:
     - id: omega
       name: sensor-omega
+      type: test-type
