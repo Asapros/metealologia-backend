@@ -37,9 +37,3 @@ async def get_reports(station_id: str, sensor_id: str, after: datetime, before: 
     if before is None:
         before = datetime.now()
     return await database.get_reports(station_id, sensor_id, after, before)
-
-
-@report_router.get("/listen")
-async def listen_for_reports(station_id: str):
-    """Streams newly created reports"""
-    raise HTTPException(status_code=501)

@@ -66,7 +66,3 @@ Success: *200 OK*
   { ... as in POST reports}
 ]
 ```
-
-### GET /stations/\<station id>/listen
-### GET /stations/\<station id>/sensors/\<sensor id>/listen
-Similar to `/reports` counterparts, but maintains the SSE connection streaming ndjson each time a new `POST` is made to a corresponding endpoint.
