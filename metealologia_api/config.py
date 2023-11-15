@@ -26,11 +26,16 @@ class Sensor(BaseModel):
 class Station(BaseModel):
     id: str
     name: str
-    key: str
     sensors: list[Sensor]
 
 
-_StationsType = TypeAdapter(list[Station])
+class StationConfig(Station):
+    key: str
+
+
+_StationsType = TypeAdapter(list[StationConfig])
 
 with open(settings.stations_schema) as file:
-    stations_schema = _StationsType.validate_python(yaml.safe_load(file))
+    config = _StationsType.validate_python(yaml.safe_load(file))
+
+stations_schema = [Station(**station_config.model_dump()) for station_config in config]
