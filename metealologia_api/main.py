@@ -8,6 +8,7 @@ from .config import settings
 
 @app.get("/")
 async def main_route():
+    """Runtime config"""
     return {
         "title": "MeteALOlogia",
         "version": importlib.metadata.version("metealologia_api"),

@@ -38,7 +38,7 @@ class ReportBody(BaseModel):
     data: dict
 
 
-@report_router.post("/reports", status_code=201, response_class=Response, dependencies=[Depends(check_authorization)])
+@report_router.post("/reports", status_code=201, responses={403: {"description": "Invalid API key"}}, dependencies=[Depends(check_authorization)])
 async def upload_report(station_id: str, sensor_id: str, body: ReportBody):
     """Uploads a new report"""
     await database.upload_report(
@@ -46,9 +46,9 @@ async def upload_report(station_id: str, sensor_id: str, body: ReportBody):
     )
 
 
-@report_router.get("/reports", response_model=list[ReportData])
+@report_router.get("/reports", response_model=list[ReportData], responses={404: {"description": "Station not found"}})
 async def get_reports(station_id: str, sensor_id: str, after: datetime, before: datetime | None = None):
-    """Fetches reports created after 'after' timestamp"""
+    """Fetches reports created between 'after' and 'before' timestamps"""
     if before is None:
         before = datetime.now()
     return await database.get_reports(station_id, sensor_id, after, before)
