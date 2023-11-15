@@ -36,6 +36,7 @@ class StationConfig(Station):
 _StationsType = TypeAdapter(list[StationConfig])
 
 with open(settings.stations_schema) as file:
-    config = _StationsType.validate_python(yaml.safe_load(file))
+    _config = _StationsType.validate_python(yaml.safe_load(file))
 
-stations_schema = [Station(**station_config.model_dump()) for station_config in config]
+stations_schema = [Station(**station_config.model_dump()) for station_config in _config]
+api_key_hashes = {station_config.id: station_config.key for station_config in _config}
