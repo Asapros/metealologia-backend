@@ -1,10 +1,10 @@
 from datetime import datetime
 
-from sqlalchemy import asc, desc, select
+from sqlalchemy import desc, select
 from sqlalchemy.ext.asyncio import AsyncConnection, create_async_engine
 
 from .schema import metadata, reports
-from .. import Database, Report, ReportUpload
+from .. import Database, ReportUpload
 from ..models import ReportData
 
 

@@ -2,7 +2,7 @@ from datetime import datetime
 from hashlib import sha256
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Header, Response, Request, Security
+from fastapi import APIRouter, Depends, HTTPException, Response, Security
 from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
