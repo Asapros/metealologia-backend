@@ -1,7 +1,0 @@
-- id: alpha
-  name: station-alpha
-  key: af2bdbe1aa9b6ec1e2ade1d694f41fc71a831d0268e9891562113d8a62add1bf
-  sensors:
-    - id: omega
-      name: sensor-omega
-      type: test-type
