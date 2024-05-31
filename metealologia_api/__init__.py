@@ -1,18 +1,30 @@
+import importlib.metadata
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 
 from .config import settings
 from .database.session import database
 from .stations import stations_router
 
-app = FastAPI(debug=settings.environment == "development")
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await database.connect(settings.database_url)
+    yield
+    await database.disconnect()
+
+app = FastAPI(debug=settings.environment == "development", lifespan=lifespan)
 app.include_router(stations_router)
 
 
-@app.on_event("startup")
-async def startup():
-    await database.connect(settings.database_url)
+@app.get("/")
+async def main_route():
+    """Runtime config"""
+    return {
+        "title": "MeteALOlogia",
+        "version": importlib.metadata.version("metealologia_api"),
+        "environment": settings.environment
+    }
 
 
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
+
