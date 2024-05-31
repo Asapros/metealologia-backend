@@ -4,7 +4,7 @@ from pydantic import BaseModel, TypeAdapter
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
 
-env_file = getenv("envfile", ".env")
+env_file = getenv("ENVFILE", ".env")
 if not path.exists(env_file):
     raise RuntimeError("Environment file '{}' not found.".format(env_file))
 
@@ -17,7 +17,7 @@ class Settings(BaseSettings):
     host: str
     port: int
 
-    model_config = SettingsConfigDict(env_file=getenv("envfile", "dev.env"))
+    model_config = SettingsConfigDict(env_file=env_file)
 
 
 settings = Settings()
