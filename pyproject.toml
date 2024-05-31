@@ -20,6 +20,7 @@ ENVFILE = "test.env"
 
 [tool.poetry.scripts]
 start = "metealologia_api.main:start"
+key = "metealologia_api.main:hash_api_key"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"
