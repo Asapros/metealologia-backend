@@ -24,13 +24,14 @@ class SQLDatabase(Database):
         await self.connection.execute(reports.insert(), report.model_dump())
         await self.connection.commit()
 
-    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime) -> list[ReportData]:
+    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime, limit: int) -> list[ReportData]:
         result = await self.connection.execute(select(reports.columns.timestamp, reports.columns.data)
                                                .where(reports.columns.station_id == station_id)
                                                .where(reports.columns.sensor_id == sensor_id)
                                                .where(reports.columns.timestamp > after)
                                                .where(reports.columns.timestamp < before)
                                                .order_by(desc(reports.columns.timestamp))
+                                               .limit(limit)
                                                )
         return [
             ReportData(timestamp=row.timestamp, data=row.data)

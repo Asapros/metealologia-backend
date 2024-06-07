@@ -2,11 +2,11 @@ from datetime import datetime
 from hashlib import sha256
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Response, Security
+from fastapi import APIRouter, Depends, HTTPException, Response, Security, Query
 from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
-from ..config import Station, api_key_hashes, stations_schema
+from ..config import Station, api_key_hashes, stations_schema, settings
 from ..database.models import ReportData, ReportUpload
 from ..database.session import database
 
@@ -45,8 +45,6 @@ async def upload_report(station_id: str, sensor_id: str, body: ReportBody):
 
 
 @report_router.get("/reports", response_model=list[ReportData], responses={404: {"description": "Station not found"}})
-async def get_reports(station_id: str, sensor_id: str, after: datetime, before: datetime | None = None):
+async def get_reports(station_id: str, sensor_id: str, before: Annotated[datetime, Query(default_factory=datetime.now)], limit: Annotated[int, Query(le=settings.report_limit)] = settings.report_limit, after: datetime = 0):
     """Fetches reports created between 'after' and 'before' timestamps"""
-    if before is None:
-        before = datetime.now()
-    return await database.get_reports(station_id, sensor_id, after, before)
+    return await database.get_reports(station_id, sensor_id, after, before, limit)

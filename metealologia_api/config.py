@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     database_url: str
     database_flavour: str
     stations_schema: str
+    report_limit: int
     host: str
     port: int
 

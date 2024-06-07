@@ -18,5 +18,5 @@ class Database(ABC):
         pass
 
     @abstractmethod
-    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime) -> list[ReportData]:
+    async def get_reports(self, station_id: str, sensor_id: str, after: datetime, before: datetime, limit: int) -> list[ReportData]:
         pass
