@@ -3,6 +3,7 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 
+from .atcs import atcs_router
 from .config import settings
 from .database.session import database
 from .stations import stations_router
@@ -15,6 +16,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(debug=settings.environment == "development", lifespan=lifespan)
 app.include_router(stations_router)
+app.include_router(atcs_router)
 
 
 @app.get("/")
