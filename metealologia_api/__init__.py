@@ -2,6 +2,7 @@ import importlib.metadata
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from starlette.middleware.cors import CORSMiddleware
 
 from .atcs import atcs_router
 from .config import settings
@@ -17,6 +18,14 @@ async def lifespan(app: FastAPI):
 app = FastAPI(debug=settings.environment == "development", lifespan=lifespan)
 app.include_router(stations_router)
 app.include_router(atcs_router)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[settings.frontend_address],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
