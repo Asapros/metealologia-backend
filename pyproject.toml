@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "metealologia-api"
+name = "metealologia-backend"
 version = "0.1.0"
-description = "API service for the Metealologia project"
+description = "Backend service for the Metealologia project"
 authors = ["Asapros <asapros@wp.pl>"]
 readme = "README.md"
-packages = [{include = "metealologia_api"}]
+packages = [{include = "metealologia_backend"}]
 license = "GPL-3.0-or-later"
 
 [tool.poetry.dependencies]
@@ -19,8 +19,8 @@ aiosqlite = "^0.20.0"
 ENVFILE = ".env.test"
 
 [tool.poetry.scripts]
-start = "metealologia_api.main:start"
-key = "metealologia_api.main:hash_api_key"
+start = "metealologia_backend.main:start"
+key = "metealologia_backend.main:hash_api_key"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.3"

@@ -6,7 +6,7 @@ import yaml
 def test_main(client):
     assert client.get("/").json() == {
         "title": "MeteALOlogia",
-        "version": importlib.metadata.version("metealologia_api"),
+        "version": importlib.metadata.version("metealologia_backend"),
         "environment": "test"
     }
 

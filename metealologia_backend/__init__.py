@@ -33,7 +33,7 @@ async def main_route():
     """Runtime config"""
     return {
         "title": "MeteALOlogia",
-        "version": importlib.metadata.version("metealologia_api"),
+        "version": importlib.metadata.version("metealologia_backend"),
         "environment": settings.environment
     }
 

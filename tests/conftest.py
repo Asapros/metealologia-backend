@@ -3,7 +3,7 @@ import yaml
 from faker import Faker, Factory
 from fastapi.testclient import TestClient
 
-from metealologia_api import app
+from metealologia_backend import app
 
 @pytest.fixture(scope="function")
 def client():

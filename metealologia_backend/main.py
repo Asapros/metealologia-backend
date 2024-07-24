@@ -10,7 +10,7 @@ from .config import settings
 
 def start():
     uvicorn.run(
-        "metealologia_api:app",
+        "metealologia_backend:app",
         host=settings.host,
         port=settings.port,
         reload=settings.environment == "development"
