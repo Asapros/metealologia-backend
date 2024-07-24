@@ -24,7 +24,7 @@ def test_invalid_sensor_get(client, faker, station_schema, sensor_paths):
     sensor_id = station_schema[0]["sensors"][0]["id"]
     assert client.get(path.replace(station_id, faker.word())).status_code == 404
     assert client.get(path.replace(sensor_id, faker.word())).status_code == 404
-    assert client.get(path).status_code == 422
+    assert client.get(path, params={"limit": 51}).status_code == 422
     assert client.get(path, params={"after": faker.word()}).status_code == 422
 
 

@@ -1,3 +1,10 @@
 __pycache__/
 .idea
+
 *.db
+!sample.db
+
+.env
+.env.*
+!.env.dev
+!.env.test

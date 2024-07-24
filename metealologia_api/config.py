@@ -1,6 +1,7 @@
 from os import getenv, path
+from typing import List
 
-from pydantic import BaseModel, TypeAdapter
+from pydantic import BaseModel, TypeAdapter, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
 
@@ -15,7 +16,7 @@ class Settings(BaseSettings):
     database_flavour: str
     stations_schema: str
     report_limit: int
-    frontend_address: str
+    cors_origins: list[str]
     host: str
     port: int
 
