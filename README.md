@@ -11,5 +11,8 @@ Backend service of the "MeteALOlogia" project. The project's goal is to sustain 
 
 6. `poetry run start` runs the server according to the configuration. For basic runtime info see `/`. Endpoint documentation is available at `/docs`. 
 
+## Deployment
+Running with Docker will soon be documented here.
+
 ## Testing
 All tests are can be run using pytest on the `tests` directory. The configuration files (`.env.test` and `test_stations.yaml`) have to be included in `PATH` during runtime, so the scripts are able to access them (eg. run pytest directly inside the directory).

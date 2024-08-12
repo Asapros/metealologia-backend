@@ -32,3 +32,6 @@ def hash_api_key():
 
     print("Key:", key)
     print("Hash:", sha256(key.encode("ascii")).hexdigest())
+
+if __name__ == "__main__":
+    start()

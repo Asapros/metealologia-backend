@@ -5,9 +5,9 @@ from pydantic import BaseModel, TypeAdapter, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
 
-env_file = getenv("ENVFILE", ".env")
-if not path.exists(env_file):
-    raise RuntimeError("Environment file '{}' not found.".format(env_file))
+env_file = getenv("ENVFILE", None)
+if env_file is not None and not path.exists(env_file):
+    raise RuntimeError("Specified ENVFILE '{}' not found.".format(env_file))
 
 
 class Settings(BaseSettings):
