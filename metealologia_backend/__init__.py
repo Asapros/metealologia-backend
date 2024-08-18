@@ -14,7 +14,7 @@ async def lifespan(app: FastAPI):
     yield
     await database.disconnect()
 
-app = FastAPI(debug=settings.environment == "development", lifespan=lifespan)
+app = FastAPI(debug=settings.environment == "development", lifespan=lifespan, root_path=settings.root_path)
 app.include_router(stations_router)
 
 app.add_middleware(
