@@ -3,7 +3,7 @@ disable_existing_loggers: false
 formatters:
   default:
     (): uvicorn.logging.DefaultFormatter
-    format: '%(asctime)s - %(name)s %(levelprefix)s %(message)s'
+    format: '%(asctime)s %(levelprefix)s %(name)s - %(message)s'
     datefmt: "%Y-%m-%d %H:%M:%S"
     use_colors: true
 handlers:
@@ -17,6 +17,8 @@ loggers:
     level: INFO
   aiosqlite:
     level: INFO
+  watchfiles:
+    level: WARNING
   root:
     level: DEBUG
     handlers: [console]
