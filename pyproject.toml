@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "metealologia-backend"
-version = "1.0.0b2"
+version = "1.0.0b3"
 description = "Backend service for the MeteALOlogia project"
 authors = ["Asapros <asapros@wp.pl>"]
 readme = "README.md"
