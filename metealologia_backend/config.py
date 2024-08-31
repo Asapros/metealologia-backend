@@ -1,7 +1,7 @@
 from os import getenv, path
 
 import yaml
-from pydantic import BaseModel, TypeAdapter
+from pydantic import BaseModel, TypeAdapter, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 env_file = getenv("ENVFILE", None)
@@ -23,9 +23,21 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=env_file)
 
+try:
+    settings = Settings()
+except ValidationError as error:
+    reasons = []
+    for reason in error.errors():
+        reasons.append("- {}: {}".format(reason["loc"][0].upper(), reason["msg"]))
 
-settings = Settings()
-
+    location = "loaded .env file '{}' and/or ".format(env_file)
+    raise RuntimeError(
+        "{}environment variables contain {} error{}:\n{}".format(
+            location if env_file is not None else "",
+            error.error_count(),
+            "s" if error.error_count() > 1 else "", "\n".join(reasons)
+        ).capitalize()
+    ) from error
 
 class Sensor(BaseModel):
     id: str
