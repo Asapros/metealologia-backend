@@ -14,7 +14,9 @@ def start():
         host=settings.host,
         port=settings.port,
         reload=settings.environment == "development",
-        log_config=settings.logging_config
+        log_config=settings.logging_config,
+        reload_dirs=["metealologia_backend"],
+        reload_includes=["dev_stations.yaml", "dev_logging.yaml", ".env.development"]
     )
 
 
