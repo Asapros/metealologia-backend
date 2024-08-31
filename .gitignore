@@ -9,5 +9,5 @@ stations.yaml
 
 .env
 .env.*
-!.env.dev
+!.env.development
 !.env.test

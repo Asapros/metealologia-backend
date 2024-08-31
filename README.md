@@ -7,7 +7,7 @@ Backend service of the "MeteALOlogia" project. The project's goal is to sustain 
    2. `poetry shell` will spawn the virtual environment.
    3. Use `poetry install` to install the dependencies.
 2. Configuration
-   1. Set the environment variable `ENVFILE` to the path of a preferred configuration file. By default, it's `.env`, however there is no such file present in the repository. A sample development configuration is contained in `.env.dev`.
+   1. Set the environment variable `ENVFILE` to the path of a preferred configuration file. A sample development configuration is contained in `.env.development`.
    2. Schema of the stations is loaded from the YAML specified in the configuration file, under `STATIONS_SCHEMA`. It cannot be edited using REST. You can find a sample schema in `sample_stations.yaml`.
    3. To create API keys for new stations use `poetry run key`. The command will generate a unique key and provide a hash ready to be copied to the stations schema file. For custom keys, the same command may be used in order to generate just the hash digest: `poetry run key <string>`.
    >  **Warning:** when using custom keys ensure proper length and randomness. Keys are not salted (nor peppered), making them prone to precomputed hash table type attacks. Meaningful tokens should **only** be used for demonstration purposes.
