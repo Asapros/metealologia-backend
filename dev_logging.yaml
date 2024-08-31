@@ -1,0 +1,23 @@
+version: 1
+disable_existing_loggers: false
+formatters:
+  default:
+    (): uvicorn.logging.DefaultFormatter
+    format: '%(asctime)s - %(name)s %(levelprefix)s %(message)s'
+    datefmt: "%Y-%m-%d %H:%M:%S"
+    use_colors: true
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: default
+    stream: ext://sys.stdout
+loggers:
+  asyncio:
+    level: INFO
+  aiosqlite:
+    level: INFO
+  root:
+    level: DEBUG
+    handlers: [console]
+    propagate: no

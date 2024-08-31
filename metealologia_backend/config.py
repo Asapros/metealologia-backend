@@ -18,6 +18,7 @@ class Settings(BaseSettings):
     cors_origins: list[str]
     host: str
     port: int
+    logging_config: str
     root_path: str = ""
 
     model_config = SettingsConfigDict(env_file=env_file)

@@ -13,7 +13,8 @@ def start():
         "metealologia_backend:app",
         host=settings.host,
         port=settings.port,
-        reload=settings.environment == "development"
+        reload=settings.environment == "development",
+        log_config=settings.logging_config
     )
 
 
