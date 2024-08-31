@@ -1,9 +1,8 @@
 from os import getenv, path
-from typing import List
 
-from pydantic import BaseModel, TypeAdapter, Field
-from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
+from pydantic import BaseModel, TypeAdapter
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 env_file = getenv("ENVFILE", None)
 if env_file is not None and not path.exists(env_file):

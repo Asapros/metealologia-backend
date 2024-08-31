@@ -4,9 +4,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from .config import settings
-from .database.session import database
-from .stations import stations_router
+from metealologia_backend.config import settings
+from metealologia_backend.database.session import database
+from metealologia_backend.stations import stations_router
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

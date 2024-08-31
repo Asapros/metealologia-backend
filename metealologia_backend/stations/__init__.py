@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
-from .reports import report_router
-from ..config import Station, stations_schema
+from metealologia_backend.stations.reports import report_router
+from metealologia_backend.config import Station, stations_schema
 
 stations_router = APIRouter(prefix="/stations", tags=["sensors"])
 stations_router.include_router(report_router)

@@ -1,5 +1,5 @@
-from . import Database
-from ..config import settings
+from metealologia_backend.database import Database
+from metealologia_backend.config import settings
 from importlib import import_module
 
 loaded_module = import_module(".." + settings.database_flavour, __name__)

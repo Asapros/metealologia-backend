@@ -6,9 +6,9 @@ from fastapi import APIRouter, Depends, HTTPException, Response, Security, Query
 from fastapi.security import APIKeyHeader
 from pydantic import BaseModel
 
-from ..config import Station, api_key_hashes, stations_schema, settings
-from ..database.models import ReportData, ReportUpload
-from ..database.session import database
+from metealologia_backend.config import Station, api_key_hashes, stations_schema, settings
+from metealologia_backend.database.models import ReportData, ReportUpload
+from metealologia_backend.database.session import database
 
 station_key_header = APIKeyHeader(name="Authorization")
 

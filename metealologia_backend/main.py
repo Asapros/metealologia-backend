@@ -5,7 +5,7 @@ from sys import argv
 
 import uvicorn
 
-from .config import settings
+from metealologia_backend.config import settings
 
 
 def start():
