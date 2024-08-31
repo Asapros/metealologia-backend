@@ -5,7 +5,7 @@ from sys import argv
 
 import uvicorn
 
-from .config import settings
+from metealologia_backend.config import settings
 
 
 def start():
@@ -13,7 +13,10 @@ def start():
         "metealologia_backend:app",
         host=settings.host,
         port=settings.port,
-        reload=settings.environment == "development"
+        reload=settings.environment == "development",
+        log_config=settings.logging_config,
+        reload_dirs=["metealologia_backend"],
+        reload_includes=["dev_stations.yaml", "dev_logging.yaml", ".env.development"]
     )
 
 

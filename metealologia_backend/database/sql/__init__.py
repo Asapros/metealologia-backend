@@ -3,9 +3,9 @@ from datetime import datetime
 from sqlalchemy import desc, select
 from sqlalchemy.ext.asyncio import AsyncConnection, create_async_engine
 
-from .schema import metadata, reports
-from .. import Database, ReportUpload
-from ..models import ReportData
+from metealologia_backend.database.sql.schema import metadata, reports
+from metealologia_backend.database import Database, ReportUpload
+from metealologia_backend.database.models import ReportData
 
 
 class SQLDatabase(Database):

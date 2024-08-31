@@ -2,12 +2,15 @@ __pycache__/
 .idea
 
 stations.yaml
-!sample_stations.yaml
+!dev_stations.yaml
+
+logging.yaml
+!dev_logging.yaml
 
 *.db
 !sample.db
 
 .env
 .env.*
-!.env.dev
+!.env.development
 !.env.test

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime
 
-from .models import Report, ReportData, ReportUpload
+from metealologia_backend.database.models import Report, ReportData, ReportUpload
 
 
 class Database(ABC):
