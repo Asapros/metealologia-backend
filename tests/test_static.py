@@ -5,6 +5,7 @@ import yaml
 
 def test_main(client):
     assert client.get("/").json() == {
+        "repository-url": "https://github.com/Asapros/metealologia-backend",
         "title": importlib.metadata.metadata("metealologia_backend")["Name"],
         "version": importlib.metadata.version("metealologia_backend"),
         "environment": "test"

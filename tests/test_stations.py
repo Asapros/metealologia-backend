@@ -32,7 +32,7 @@ def test_invalid_sensor_post(client, sensor_paths, faker, station_keys):
     path = sensor_paths[0]
     station_key = station_keys[0]
 
-    assert client.post(path, headers={"Authorization": faker.word()}).status_code == 403
+    assert client.post(path, headers={"Authorization": faker.word()}).status_code == 401
     assert client.post(path, headers={"Authorization": station_key}, content=faker.sentence()).status_code == 422
     assert client.post(path, headers={"Authorization": station_key},
                        json={"timestamp": faker.word(), "data": {}}).status_code == 422
