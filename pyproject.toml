@@ -6,6 +6,7 @@ authors = ["Asapros <asapros@wp.pl>"]
 readme = "README.md"
 packages = [{include = "metealologia_backend"}]
 license = "GPL-3.0-or-later"
+repository = "https://github.com/Asapros/metealologia-backend"
 
 [tool.poetry.dependencies]
 python = "^3.10"
