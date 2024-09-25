@@ -1,5 +1,5 @@
 # MeteALOlogia-backend
-Backend service of the "MeteALOlogia" project. The project's goal is to sustain a web of weather stations. Measurements will be accessible through a website. This repository is an HTTP REST API backend for it. You can see the API running on http://mini0nki.duckdns.org:10200/api/
+Backend service of the "MeteALOlogia" project. The project's goal is to sustain a web of weather stations. Measurements will be accessible through a website. This repository is an HTTP REST API backend for it. You can see the API running on https://mini0nki.duckdns.org:10200/api/
 
 ## Run locally
 1. Installation
