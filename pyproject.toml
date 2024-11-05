@@ -1,19 +1,20 @@
 [tool.poetry]
 name = "metealologia-backend"
-version = "1.0.0b3"
+version = "1.0.0b4"
 description = "Backend service for the MeteALOlogia project"
 authors = ["Asapros <asapros@wp.pl>"]
 readme = "README.md"
 packages = [{include = "metealologia_backend"}]
 license = "GPL-3.0-or-later"
+repository = "https://github.com/Asapros/metealologia-backend"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pydantic-settings = "^2.0.3"
 fastapi = "^0.111.0"
 uvicorn = {extras = ["standard"], version = "^0.30.0"}
 sqlalchemy = {extras = ["asyncio"], version = "^2.0.30"}
 aiosqlite = "^0.20.0"
+pydantic-settings = "^2.4.0"
 
 [tool.pytest_env]
 ENVFILE = ".env.test"

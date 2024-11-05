@@ -30,6 +30,7 @@ app.add_middleware(
 async def main_route():
     """Runtime config"""
     return {
+        "repository_url": importlib.metadata.metadata("metealologia_backend")["Home-Page"],
         "title": importlib.metadata.metadata("metealologia_backend")["Name"],
         "version": importlib.metadata.version("metealologia_backend"),
         "environment": settings.environment

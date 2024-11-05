@@ -3,19 +3,15 @@
   key: af2bdbe1aa9b6ec1e2ade1d694f41fc71a831d0268e9891562113d8a62add1bf
   sensors:
     - id: x
-      name: sensor-x
       type: test-type
     - id: y
-      name: sensor-y
       type: test-type-2
 - id: beta
   name: station-beta
   key: ...
   sensors:
     - id: a
-      name: sensor-a
       type: test-type
     - id: b
-      name: sensor-b
       type: test-type-2
 

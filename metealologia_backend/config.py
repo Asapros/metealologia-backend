@@ -41,9 +41,7 @@ except ValidationError as error:
 
 class Sensor(BaseModel):
     id: str
-    name: str
     type: str
-
 
 class Station(BaseModel):
     id: str

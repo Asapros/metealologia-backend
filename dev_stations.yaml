@@ -1,7 +1,22 @@
 - id: alpha
   name: station-alpha  # front-end display name
-  key: af2bdbe1aa9b6ec1e2ade1d694f41fc71a831d0268e9891562113d8a62add1bf  # sha256 of the key used in Authorization header (here: 'sample')
+  key: e85130791f31db1699f61a5e7ae7b5e85e70399414f38476091896214771cd17  # sha256 of the key used in Authorization header (here: 'sample1')
   sensors:
     - id: omega
-      name: sensor-omega  # front-end display name
       type: test-type  # informs the front-end on how to display measurements
+    - id: psi
+      type: pressure
+- id: beta
+  name: station-beta
+  key: 5a9392784e07eb40cfb3f4a464e0a91451f573eeb59d600983e190bd8aaddca6  # 'sample2'
+  sensors:
+    - id: omikron
+      type: temperature
+    - id: epsilon
+      type: humidity
+- id: gamma
+  name: station-gamma
+  key: 369d8e27270351b658b102785616797dab62b659058ca2494872b6bd0181aca4  # 'sample3'
+  sensors:
+    - id: lambda
+      type: air-pollution

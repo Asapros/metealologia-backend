@@ -9,14 +9,15 @@ from metealologia_backend.config import settings
 
 
 def start():
+    reload = settings.environment == "development"
     uvicorn.run(
         "metealologia_backend:app",
         host=settings.host,
         port=settings.port,
-        reload=settings.environment == "development",
+        reload=reload,
         log_config=settings.logging_config,
-        reload_dirs=["metealologia_backend"],
-        reload_includes=["dev_stations.yaml", "dev_logging.yaml", ".env.development"]
+        reload_dirs=["metealologia_backend"] if reload else [],
+        reload_includes=["dev_stations.yaml", "dev_logging.yaml", ".env.development"] if reload else []
     )
 
 
